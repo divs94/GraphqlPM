@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:ital,wght@0,100;0,400;0,500;1,400&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(18, 69, 74);
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar{
+display: flex;
+justify-content: center;
+align-items: center;
+justify-items: center;
+}
+.navbar-brand h1{
+  color: rgb(2, 240, 252);
+  font-size: 1.7rem;
+}
+
+.navbar-brand img{
+  width: 7.5vw;
+  height: 7.5vh;
+}
+
+.btn-secondary{
+  background-color: rgb(24, 26, 27);
+}
+
+.btn-secondary:hover{
+  background-color:rgb(4, 83, 228) ;
+  border: 2px solid rgb(15, 23, 29) ;
+}
+
+.user_icon{
+  margin-right: 10px;
+  margin-bottom: 2px;
+  font-size: 1.4rem;
+}
+.btn-primary{
+  background-color: cyan;
+  color: black;
+}
+.btn-sm{
+  margin-left: 50px;
+  border: 1px solid aqua;
+}
+.btn-sm:hover{
+  background-color: red;
+  color: white;
+}
+.btn-primary:hover{
+  background-color: rgb(15, 23, 29);
+  border: 2px solid cyan;
+}
+
+.btn-success{
+  background-color: cyan;
+  color: black;
+}
+.btn-success:hover{
+  background-color: rgb(44, 48, 51);
+  border: 0.5px solid cyan;
+}
+.delete_icon{
+  color: aqua;
+  font-size: 1.2rem;
+}
+.delete_icon:hover{
+  color: white;
+}
+
+table tr{
+  color: white;
+}
+
+hr{
+  color: whitesmoke;
+}
+
+.card{
+  background-color: rgb(22, 30, 37);
+  color: white;
+}
+/* .card:hover{
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+} */
+.client_card{
+  background-color: rgb(53, 58, 63);
+  color: white;
+  padding: 1.1rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+}
+.client_card:hover{
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+}
+.project_card{
+  background-color:rgb(23, 26, 30) ;
+  color: whitesmoke;
+  cursor: inherit;
+}
+.modal-header{
+  background-color: cyan;
+  color: black;
+} 
+
+.table .table_data:hover{
+  background-color: rgb(14, 25, 28);
+  color: cyan;
+}
+/* .table .table_data{
+  border-left: 2px solid red;
+} */
+
+thead{
+  background-color: black;
+  border: 1px solid cyan;
+}

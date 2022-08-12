@@ -1,0 +1,30 @@
+name: windows
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-2022, windows-2019]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install build environment
+        run: |
+          choco install --no-progress openssl
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ github.job }}-${{ matrix.os }}
+          variant: sccache
+      - name: Build tests
+        env:
+          CB_CACHE_OPTION: sccache
+        run: ruby ./bin/build-tests.rb

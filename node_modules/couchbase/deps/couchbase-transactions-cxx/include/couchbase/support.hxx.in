@@ -1,0 +1,66 @@
+/*
+ *     Copyright 2021 Couchbase, Inc.
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
+
+#pragma once
+/** Simple version stuff for now - cmake populates the version */
+#define VERSION_MAJOR "@CB_VERSION_MAJOR@"
+#define VERSION_MINOR "@CB_VERSION_MINOR@"
+#define VERSION_PATCH "@CB_VERSION_PATCH@"
+#define VERSION_TWEAK "@CB_VERSION_TWEAK@"
+#define VERSION_SHA "-@CB_VERSION_SHA@"
+#define VERSION_STR "@CB_VERSION_STRING@"
+
+
+/** Helpers to avoid needless warnings */
+/* C++ language standard detection - helpful later on... */
+#if (defined(__cplusplus) && __cplusplus >= 201703L) || (defined(_HAS_CXX17) && _HAS_CXX17 == 1)
+#define CB_HAS_CPP_17
+#define CB_HAS_CPP_14
+#elif (defined(__cplusplus) && __cplusplus >= 201402L) || (defined(_HAS_CXX14) && _HAS_CXX14 == 1)
+#define CB_HAS_CPP_14
+#endif
+
+/* define a portable, warning-free nodiscard - CB_NODISCARD */
+#if defined(__has_cpp_attribute)
+    #if __has_cpp_attribute(nodiscard)
+        #if defined(__clang__) && !defined(CB_HAS_CPP_17)
+            #define CB_NODISCARD
+        #else
+            #define CB_NODISCARD [[nodiscard]]
+        #endif
+    #elif __has_cpp_attribute(gnu::warn_unused_result)
+        #define CB_NODISCARD [[gnu::warn_unused_result]]
+    #else
+        #define CB_NODISCARD
+    #endif
+#else
+    #define CB_NODISCARD
+#endif
+
+#include <string>
+#include <sstream>
+#include <vector>
+
+static inline std::vector<std::string> split_string(const std::string& str, char delimiter)
+{
+    std::vector<std::string> elements;
+    std::stringstream stream(str);
+    std::string element;
+    while(std::getline(stream, element, delimiter)) {
+        elements.push_back(element);
+    }
+    return elements;
+}
